@@ -10,18 +10,20 @@ sudo apt-get update
 sudo apt-get install -y kubectl
 
 while true; do
+  echo "*  *  *  *  *"
   echo
   echo "Minikube makes it easy to run Kubernetes locally, running a single-node cluster on your machine."
   echo "Good for trying out Kubernetes or not being overwhelmed by a big cluster network"
+  echo
   echo "*  *  *  *  *"
   echo
-  read -r -p "Install Minikube? " yn
+  read -r -p "Install Minikube [Yes/No] ? " yn
   case $yn in
     [Yy][Ee][sS]|[yY]* )
       curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.2/minikube-linux-amd64
       chmod +x minikube && sudo mv minikube /usr/local/bin/
 	    echo
-      minikube start
+      minikube version
       echo
       break;;
     [Nn][Oo]|[nN]* )
@@ -32,7 +34,7 @@ done
 
 echo "*  *  *  *  *"
 echo
-kubectl api-versions
+kubectl version --short=true
 echo
 echo "*  *  *  *  *"
 echo
