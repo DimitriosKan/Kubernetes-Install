@@ -20,9 +20,10 @@ while true; do
   read -r -p "Install Minikube [Yes/No] ? " yn
   case $yn in
     [Yy][Ee][sS]|[yY]* )
-      curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.2/minikube-linux-amd64
-      chmod +x minikube && sudo mv minikube /usr/local/bin/
-	    echo
+      curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+      chmod +x minikube && sudo install minikube /usr/local/bin/
+      rm minikube
+      echo
       minikube version
       echo
       break;;
